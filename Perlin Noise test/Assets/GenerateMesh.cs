@@ -13,35 +13,24 @@ public class GenerateMesh : MonoBehaviour
     void Start()
     {
         terrain = new Mesh();
+        
         GetComponent<MeshFilter>().mesh = terrain;
         vertices = new Vector3[size * size];
         triangles = new int[size * size * 6];
 
         CreateShape();
         UpdateShape();
+
     }
 
     void CreateShape()
     {
-        /*vertices = new Vector3[]
-        {
-            new Vector3(0, 0, 0),
-            new Vector3(0, 0, 1),
-            new Vector3(1, 0, 0)
-        };
-
-        triangles = new int[]
-        {
-            0, 1, 2
-        };*/
 
         for(int z = 0; z < size ; z++)
         {
             for(int x = 0; x < size; x++)
             {
                 vertices[z * size + x] = new Vector3(x, 0, z);
-                //GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                //cube.transform.position = new Vector3(x, y, 0);
             }
         }
 
@@ -63,11 +52,12 @@ public class GenerateMesh : MonoBehaviour
             verts++;
         }
 
-        for(int x = 0; x < size; x++)
+        /*for(int x = 0; x < size; x++)
             for(int z = 0; z < size; z++)
             {
-                ;
+                vertices[x * size + z].y = Random.Range(0f, 10f);
             }
+            */
     }
 
     void UpdateShape()
